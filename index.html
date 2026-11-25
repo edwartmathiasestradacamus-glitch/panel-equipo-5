@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Porcentaje de Trabajo - Equipo de 5</title>
+
+  <!-- Fuente Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================================
+       1. RESET, VARIABLES Y DISEÑO BASE 100% RESPONSIVE (DESDE 320PX)
+       ========================================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #070b14;
+      --panel-bg: rgba(10, 15, 28, 0.84);
+      --panel-border: rgba(255, 255, 255, 0.16);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --accent-green: #22c55e;
+      --accent-cyan: #22d3ee;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    html, body {
+      min-height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      -webkit-tap-highlight-color: transparent;
+      line-height: 1.4;
+    }
+
+    /* =========================================================================
+       2. FONDO ILUSTRADO EN PANTALLA COMPLETA DEL CUARTO REAL DE FERNANFLOO
+       ========================================================================= */
+    .photo-room-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-color: #171717;
+      background-image: url("data:image/jpeg;base64,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");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: scale(1.01);
+    }
+
+    .fernan-room-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(10, 15, 28, 0.22) 0%, rgba(7, 11, 20, 0.68) 100%),
+        linear-gradient(180deg, rgba(7, 11, 20, 0.42) 0%, rgba(7, 11, 20, 0.62) 100%);
+    }
+
+    /* =========================================================================
+       3. CONTENEDOR PRINCIPAL Y TARJETAS GLASSMORPHISM
+       ========================================================================= */
+    .app-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 14px 12px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .app-wrapper {
+        padding: 22px 20px 44px;
+        gap: 18px;
+      }
+    }
+
+    .glass-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.48);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =========================================================================
+       4. ENCABEZADO SUPERIOR Y BADGES DE ESTADO
+       ========================================================================= */
+    .top-header {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 900px) {
+      .top-header {
+        padding: 20px 24px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pill-sync-live {
+      border-color: rgba(34, 197, 94, 0.45);
+      background: rgba(34, 197, 94, 0.16);
+      color: #bbf7d0;
+    }
+
+    .pill-sync-local {
+      border-color: rgba(251, 191, 36, 0.45);
+      background: rgba(251, 191, 36, 0.16);
+      color: #fde68a;
+    }
+
+    .sync-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .sync-dot.local {
+      background: #fbbf24;
+      box-shadow: 0 0 8px #fbbf24;
+    }
+
+    .pill-role-viewer {
+      border-color: rgba(34, 211, 238, 0.45);
+      background: rgba(34, 211, 238, 0.16);
+      color: #a5f3fc;
+    }
+
+    .pill-role-creator {
+      border-color: rgba(34, 197, 94, 0.5);
+      background: rgba(34, 197, 94, 0.22);
+      color: #86efac;
+    }
+
+    .app-title {
+      font-size: clamp(1.25rem, 3.6vw, 1.85rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .app-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-creator-lock {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #04130a;
+      border-color: rgba(134, 239, 172, 0.6);
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+      width: 100%;
+    }
+
+    @media (min-width: 480px) {
+      .btn-creator-lock {
+        width: auto;
+      }
+    }
+
+    .btn-creator-lock:hover {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    .btn-exit-creator {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fde68a;
+      border-color: rgba(251, 191, 36, 0.45);
+      width: 100%;
+    }
+
+    @media (min-width: 480px) {
+      .btn-exit-creator {
+        width: auto;
+      }
+    }
+
+    .btn-exit-creator:hover {
+      background: rgba(251, 191, 36, 0.3);
+    }
+
+    /* =========================================================================
+       5. TARJETAS DE MÉTRICAS PRINCIPALES (PROMEDIO 500% + SUMA TOTAL EN VIVO)
+       ========================================================================= */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    .metric-card {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .metric-hint {
+      margin-top: 3px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .metric-value {
+      font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .metric-value-fixed {
+      color: #4ade80;
+      text-shadow: 0 0 20px rgba(74, 222, 128, 0.35);
+    }
+
+    .metric-value-sum {
+      color: #38bdf8;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+    }
+
+    /* =========================================================================
+       6. BARRA DE MÚSICA SUPER MARIO BROS (1.0X NORMAL + PAUSA ABSOLUTA)
+       ========================================================================= */
+    .music-bar {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 820px) {
+      .music-bar {
+        padding: 16px 20px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .music-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nes-badge-box {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 13px;
+      background: linear-gradient(145deg, #dc2626, #991b1b);
+      border: 2px solid rgba(254, 202, 202, 0.65);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+    }
+
+    .nes-badge-top {
+      font-size: 10px;
+      font-weight: 900;
+      color: #fde047;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .nes-badge-bottom {
+      font-size: 10px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-top: 2px;
+      line-height: 1;
+    }
+
+    .music-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .music-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .music-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .music-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-music-playing {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #090d16;
+      border-color: rgba(254, 240, 138, 0.7);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+      flex: 1 1 auto;
+    }
+
+    .btn-music-playing:hover {
+      background: linear-gradient(135deg, #fcd34d, #fbbf24);
+    }
+
+    .btn-music-paused {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #04130a;
+      border-color: rgba(134, 239, 172, 0.7);
+      box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+      flex: 1 1 auto;
+    }
+
+    .btn-music-paused:hover {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+    }
+
+    @media (min-width: 540px) {
+      .btn-music-playing, .btn-music-paused {
+        flex: 0 0 auto;
+      }
+    }
+
+    .volume-control-box {
+      min-height: 44px;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      background: rgba(5, 8, 17, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex: 1 1 auto;
+    }
+
+    @media (min-width: 540px) {
+      .volume-control-box {
+        flex: 0 0 auto;
+      }
+    }
+
+    .volume-slider {
+      width: 96px;
+      accent-color: #22c55e;
+      cursor: pointer;
+    }
+
+    .volume-percent {
+      min-width: 34px;
+      text-align: right;
+      color: #86efac;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================================================
+       7. LAYOUT PRINCIPAL: GRÁFICO DE BARRAS EN VIVO + PANEL DEL CREADOR
+       ========================================================================= */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .main-grid.creator-open {
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 980px) {
+      .main-grid.creator-open {
+        grid-template-columns: 1.35fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .chart-card {
+      padding: 18px 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .chart-card {
+        padding: 22px 24px 24px;
+      }
+    }
+
+    .chart-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .chart-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Área del gráfico vertical con eje Y exacto (0% a 100%) */
+    .chart-stage-wrapper {
+      width: 100%;
+      padding-top: 26px; /* Espacio superior para la etiqueta 100% sobre el tope */
+    }
+
+    .chart-plot-area {
+      position: relative;
+      height: 300px;
+      margin-left: 42px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+      border-left: 2px solid rgba(255, 255, 255, 0.25);
+    }
+
+    @media (min-width: 640px) {
+      .chart-plot-area {
+        height: 340px;
+        margin-left: 48px;
+      }
+    }
+
+    /* Líneas horizontales de guía en 0%, 25%, 50%, 75% y 100% */
+    .y-grid-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1px dashed rgba(255, 255, 255, 0.16);
+      pointer-events: none;
+    }
+
+    .y-grid-line.top-100 {
+      border-top: 1.5px solid rgba(74, 222, 128, 0.45);
+    }
+
+    .y-axis-tick {
+      position: absolute;
+      right: calc(100% + 8px);
+      transform: translateY(-50%);
+      font-size: 11px;
+      font-weight: 800;
+      color: #cbd5e1;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .y-axis-tick.top-100 {
+      color: #4ade80;
+    }
+
+    /* Contenedor de las 5 columnas de barras */
+    .bars-columns-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      padding: 0 8px;
+      align-items: end;
+    }
+
+    @media (min-width: 640px) {
+      .bars-columns-grid {
+        gap: 18px;
+        padding: 0 18px;
+      }
+    }
+
+    .bar-column-slot {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    /* La barra crece desde 0% hasta 100% exacto de la altura del plot area */
+    .bar-fill {
+      position: relative;
+      width: 100%;
+      max-width: 68px;
+      height: 0%;
+      border-radius: 12px 12px 2px 2px;
+      transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+    }
+
+    .bar-fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 45%);
+      pointer-events: none;
+    }
+
+    .bar-fill.is-full-100 {
+      box-shadow: 0 0 24px rgba(74, 222, 128, 0.65);
+    }
+
+    .bar-percent-tag {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(9, 13, 24, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (min-width: 640px) {
+      .bar-percent-tag {
+        font-size: 12px;
+        padding: 3px 9px;
+      }
+    }
+
+    .bar-percent-tag.is-full-100 {
+      border-color: #4ade80;
+      color: #4ade80;
+    }
+
+    /* Etiquetas de nombres debajo de cada barra */
+    .bars-names-row {
+      margin-left: 42px;
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      padding: 0 8px;
+    }
+
+    @media (min-width: 640px) {
+      .bars-names-row {
+        margin-left: 48px;
+        gap: 18px;
+        padding: 0 18px;
+      }
+    }
+
+    .bar-name-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #f1f5f9;
+      word-break: break-word;
+      line-height: 1.25;
+      padding: 4px 2px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (min-width: 640px) {
+      .bar-name-label {
+        font-size: 12px;
+        padding: 5px 6px;
+      }
+    }
+
+    /* =========================================================================
+       8. PANEL DE EDICIÓN EXCLUSIVO DEL CREADOR (OCULTO PARA COMPAÑEROS)
+       ========================================================================= */
+    .creator-panel {
+      padding: 18px 16px;
+      border-color: rgba(34, 197, 94, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .creator-panel {
+        padding: 20px;
+      }
+    }
+
+    .creator-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .creator-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #86efac;
+      background: rgba(34, 197, 94, 0.18);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .creator-panel-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 4px;
+    }
+
+    .save-status-pill {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .quick-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .btn-quick {
+      min-height: 44px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      transition: background 0.15s ease;
+    }
+
+    .btn-quick:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .btn-quick.green {
+      border-color: rgba(74, 222, 128, 0.4);
+      background: rgba(34, 197, 94, 0.18);
+      color: #bbf7d0;
+    }
+
+    .btn-quick.rose {
+      border-color: rgba(251, 113, 133, 0.4);
+      background: rgba(244, 63, 94, 0.18);
+      color: #fecdd3;
+    }
+
+    .person-editor-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .person-editor-item {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: rgba(5, 9, 19, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .person-top-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .person-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .person-name-input {
+      min-height: 40px;
+      flex: 1;
+      min-width: 0;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(15, 23, 42, 0.9);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .person-name-input:focus {
+      outline: none;
+      border-color: #22d3ee;
+    }
+
+    .person-number-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 0 8px;
+      min-height: 40px;
+    }
+
+    .person-percent-input {
+      width: 54px;
+      border: none;
+      background: transparent;
+      color: #4ade80;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 900;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .person-percent-input:focus {
+      outline: none;
+    }
+
+    .person-slider {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      accent-color: #22c55e;
+    }
+
+    /* Formulario de cambio de PIN privado del creador */
+    .pin-settings-box {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pin-settings-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #e2e8f0;
+    }
+
+    .pin-settings-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pin-input {
+      min-height: 44px;
+      flex: 1;
+      min-width: 0;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(5, 8, 17, 0.92);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .pin-input:focus {
+      outline: none;
+      border-color: #22c55e;
+    }
+
+    /* =========================================================================
+       9. MODAL DE ACCESO PRIVADO PARA EL CREADOR (SIN PISTAS DE PIN)
+       ========================================================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(3, 6, 14, 0.82);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 390px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .modal-error {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fda4af;
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Toast de notificación flotante */
+    .toast-notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      background: rgba(9, 14, 26, 0.95);
+      border: 1px solid rgba(74, 222, 128, 0.5);
+      color: #f8fafc;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+
+    /* Ajustes adicionales para móviles pequeños y orientación vertical */
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 10px 8px 26px; gap: 11px; }
+      .top-header { padding: 14px 12px; }
+      .app-subtitle { font-size: 12px; }
+      .header-actions, .header-actions .btn { width: 100%; }
+      .metric-card { padding: 13px 12px; gap: 8px; }
+      .metric-label { font-size: 10px; }
+      .metric-hint { font-size: 10px; }
+      .chart-card { padding: 15px 10px 17px; gap: 13px; }
+      .chart-plot-area { height: clamp(220px, 43vh, 290px); margin-left: 36px; }
+      .bars-columns-grid { gap: 4px; padding: 0 3px; }
+      .bars-names-row { margin-left: 36px; gap: 4px; padding: 0 3px; }
+      .bar-name-label { font-size: 9px; padding: 4px 1px; overflow-wrap: anywhere; }
+      .bar-percent-tag { font-size: 9px; padding: 2px 4px; }
+      .y-axis-tick { font-size: 9px; right: calc(100% + 6px); }
+      .music-bar { padding: 12px; }
+      .music-controls { width: 100%; }
+      .btn-music-playing, .btn-music-paused { width: 100%; }
+      .volume-control-box { min-width: 0; width: 100%; }
+      .volume-slider { flex: 1; width: auto; min-width: 45px; }
+      .quick-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-actions-grid .btn-quick:last-child { grid-column: 1 / -1; }
+      .creator-panel { padding: 14px 11px; }
+      .person-editor-item { padding: 10px; }
+      .modal-card { padding: 18px 15px; }
+    }
+
+    @media (max-width: 360px) {
+      .chart-plot-area { margin-left: 32px; }
+      .bars-names-row { margin-left: 32px; }
+      .bar-name-label { font-size: 8px; }
+      .bar-percent-tag { font-size: 8px; }
+      .y-axis-tick { font-size: 8px; }
+      .metric-value { font-size: 1.55rem; }
+    }
+
+    @media (min-width: 1200px) {
+      .app-wrapper { padding-top: 26px; }
+      .chart-plot-area { height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       ESCENA ILUSTRADA DEL CUARTO REAL DE FERNANFLOO (FONDO PANTALLA COMPLETA)
+       ========================================================================= -->
+  <div class="photo-room-backdrop" aria-hidden="true"></div>
+  <div class="fernan-room-vignette" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       CONTENIDO PRINCIPAL DE LA APLICACIÓN
+       ========================================================================= -->
+  <div class="app-wrapper">
+    <!-- Encabezado con Estado de Sincronización y Botón de Acceso Creador -->
+    <header class="glass-card top-header">
+      <div class="header-left">
+        <div class="badges-row">
+          <span id="sync-status-badge" class="pill-badge pill-sync-local">
+            <span id="sync-status-dot" class="sync-dot local"></span>
+            <span id="sync-status-text">Conectando en vivo...</span>
+          </span>
+          <span id="role-status-badge" class="pill-badge pill-role-viewer">
+            👁️ Vista Compañeros (Solo Lectura)
+          </span>
+        </div>
+        <h1 class="app-title">Porcentaje de Trabajo — Equipo de 5</h1>
+        <p class="app-subtitle">
+          Panel de avance de cada integrante (0% a 100%). La sincronización en vivo se activa al conectar Firebase.
+        </p>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-open-creator-modal" type="button" class="btn btn-creator-lock">
+          <span>🔒 Acceso del administrador</span>
+        </button>
+        <button id="btn-exit-creator-mode" type="button" class="btn btn-exit-creator hidden">
+          <span>↩ Cerrar sesión de administrador</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Tarjetas Métricas Principales -->
+    <section class="metrics-grid" aria-label="Indicadores del equipo">
+      <article class="glass-card metric-card">
+        <div>
+          <div class="metric-label">Capacidad Máxima del Equipo</div>
+          <div class="metric-hint">Máximo posible entre los 5 integrantes (5 × 100%)</div>
+        </div>
+        <div id="team-average-display" class="metric-value metric-value-fixed">500%</div>
+      </article>
+
+      <article class="glass-card metric-card">
+        <div>
+          <div class="metric-label">Suma Total</div>
+          <div class="metric-hint">Suma acumulada en vivo de los 5 integrantes</div>
+        </div>
+        <div id="team-sum-display" class="metric-value metric-value-sum">100%</div>
+      </article>
+    </section>
+
+    <!-- Barra de Música de Super Mario Bros (Instancia Única 1.0x Normal + Pausa Absoluta) -->
+    <section class="glass-card music-bar" aria-label="Control de música de fondo">
+      <div class="music-info">
+        <div class="nes-badge-box" aria-hidden="true">
+          <span class="nes-badge-top">MARIO</span>
+          <span class="nes-badge-bottom">NES</span>
+        </div>
+        <div>
+          <div class="music-title-row">
+            <span class="music-title">Música de Super Mario Bros</span>
+            <span id="mario-status-badge" class="pill-badge">Iniciando...</span>
+            <span class="pill-badge pill-role-viewer">1.0x Normal</span>
+          </div>
+          <p class="music-sub">
+            Tema estilo 8-bit · Se inicia automáticamente cuando el navegador lo permite; puedes pausar o reanudar
+          </p>
+        </div>
+      </div>
+
+      <div class="music-controls">
+        <button id="btn-toggle-mario-music" type="button" class="btn btn-music-paused">
+          ▶ Reanudar Música
+        </button>
+
+        <label class="volume-control-box">
+          <span>Volumen</span>
+          <input
+            id="mario-volume-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="80"
+            aria-label="Volumen de Música Mario Bros"
+            class="volume-slider"
+          />
+          <span id="mario-volume-label" class="volume-percent">80%</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Área Principal: Gráfico de Barras en Vivo + Panel Privado del Creador -->
+    <main id="main-grid" class="main-grid">
+      <!-- Gráfico de Barras Verticales en Vivo (0% a 100%) -->
+      <section class="glass-card chart-card" aria-label="Gráfico de barras de porcentaje de trabajo">
+        <div class="chart-header">
+          <div>
+            <h2 class="chart-title">Avance Individual en Vivo</h2>
+            <p class="chart-caption">Cada barra va de 0% hasta el tope máximo de 100%</p>
+          </div>
+        </div>
+
+        <div class="chart-stage-wrapper">
+          <div class="chart-plot-area">
+            <!-- Líneas de referencia del Eje Y: 100%, 75%, 50%, 25%, 0% -->
+            <div class="y-grid-line top-100" style="bottom: 100%;">
+              <span class="y-axis-tick top-100">100%</span>
+            </div>
+            <div class="y-grid-line" style="bottom: 75%;">
+              <span class="y-axis-tick">75%</span>
+            </div>
+            <div class="y-grid-line" style="bottom: 50%;">
+              <span class="y-axis-tick">50%</span>
+            </div>
+            <div class="y-grid-line" style="bottom: 25%;">
+              <span class="y-axis-tick">25%</span>
+            </div>
+            <div class="y-grid-line" style="bottom: 0%;">
+              <span class="y-axis-tick">0%</span>
+            </div>
+
+            <!-- 5 Barras Verticales -->
+            <div id="bars-columns-grid" class="bars-columns-grid"></div>
+          </div>
+
+          <!-- Nombres de los 5 Integrantes -->
+          <div id="bars-names-row" class="bars-names-row"></div>
+        </div>
+      </section>
+
+      <!-- Panel Privado del Creador (OCULTO por defecto para compañeros) -->
+      <aside id="creator-editor-panel" class="glass-card creator-panel hidden" aria-label="Panel privado de edición">
+        <div class="creator-panel-header">
+          <div>
+            <span class="creator-tag">Solo Creador</span>
+            <h2 class="creator-panel-title">Editar Porcentajes y Nombres</h2>
+          </div>
+          <span id="save-status-pill" class="save-status-pill">Listo</span>
+        </div>
+
+        <!-- Botones Rápidos -->
+        <div class="quick-actions-grid">
+          <button id="btn-all-100" type="button" class="btn-quick green">Todos al 100%</button>
+          <button id="btn-equal-20" type="button" class="btn-quick">Equitativo 20%</button>
+          <button id="btn-reset-0" type="button" class="btn-quick rose">Reiniciar a 0%</button>
+        </div>
+
+        <!-- Controles Individuales (Sliders + Inputs Numéricos + Nombres) -->
+        <div id="person-editor-list" class="person-editor-list"></div>
+
+        <div class="pin-settings-box">
+          <div class="pin-settings-label">Acceso protegido por Firebase Authentication</div>
+          <p class="music-sub">Solo la cuenta administradora autorizada puede guardar cambios. Los demás usuarios pueden consultar el gráfico, pero no modificarlo.</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Acceso del único administrador autorizado -->
+  <div id="creator-login-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+    <div class="glass-card modal-card">
+      <h2 id="login-modal-title" class="modal-title">🔒 Acceso del administrador</h2>
+      <p class="modal-desc">Inicia sesión con el correo y la contraseña de la cuenta administradora registrada en Firebase. Esta cuenta es la única autorizada para editar.</p>
+      <form id="creator-login-form" style="display: flex; flex-direction: column; gap: 12px;">
+        <input id="creator-email-input" type="email" autocomplete="username" placeholder="Correo del administrador" required class="pin-input" />
+        <input id="creator-password-input" type="password" autocomplete="current-password" placeholder="Contraseña" required class="pin-input" />
+        <div id="creator-login-error" class="modal-error hidden" role="alert">No se pudo iniciar sesión. Revisa tus datos y la configuración de Firebase.</div>
+        <div class="modal-actions">
+          <button id="btn-cancel-login-modal" type="button" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-creator-lock">Iniciar sesión</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificación Flotante -->
+  <div id="toast-notification" class="toast-notification hidden" role="status" aria-live="polite"></div>
+
+  <!-- =========================================================================
+       LÓGICA DE LA APLICACIÓN: AUDIO MARIO SINGLETON + FIREBASE REALTIME + UI
+       ========================================================================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, setPersistence, inMemoryPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    /* =========================================================================
+       CONFIGURACIÓN DE FIREBASE
+       Sustituye los valores de ejemplo por los de tu proyecto Firebase.
+       ADMIN_UID es el UID de TU usuario administrador en Authentication.
+       ========================================================================= */
+    const FIREBASE_PUBLIC_CONFIG = {
+      apiKey: "AIzaSyCqBeFZkbgagfd5duPU7kufn8g_7YqUZ1c",
+      authDomain: "team-work-5.firebaseapp.com",
+      projectId: "team-work-5",
+      storageBucket: "team-work-5.firebasestorage.app",
+      messagingSenderId: "304967430798",
+      appId: "1:304967430798:web:a18b066da78b305ffbcfdf",
+      measurementId: "G-HK5JBNX6C2"
+    };
+
+    // UID público de referencia: la protección real la hacen las reglas de Firestore.
+    const ADMIN_UID = "nvSJ64snVxglsEwDxk6uOXVExV63";
+    const FIRESTORE_APP_ID = "equipo-trabajo-5-app";
+
+    /* =========================================================================
+       1. SINGLETON ESTRICTO DE MÚSICA SUPER MARIO BROS (window.__MARIO_ONE_PLAYER__)
+       - Destruye cualquier instancia previa para garantizar 0% sonido doble
+       - Velocidad normal 1.0x exacta: 200 BPM de negra (0.30s por negra)
+       - Programación paso a paso: un único setTimeout por nota y un sessionToken
+       - Auto-inicio al abrir + Pausa absoluta en 0ms cerrando AudioContext
+       ========================================================================= */
+    if (window.__MARIO_ONE_PLAYER__ && typeof window.__MARIO_ONE_PLAYER__.destroy === 'function') {
+      window.__MARIO_ONE_PLAYER__.destroy();
+    }
+
+    class MarioOnePlayerSingleton {
+      constructor() {
+        this.audioCtx = null;
+        this.masterGain = null;
+        this.activeOscillators = new Set();
+        this.stepTimeoutId = null;
+        this.sessionToken = 0;
+        this.isPlaying = false;
+        this.userPaused = false;
+        this.stepIndex = 0;
+        this.volume = 0.80;
+        this.bpm = 200; // Velocidad normal 1.0x (negra = 0.30s, corchea = 0.15s)
+        this.gestureAttached = false;
+        this.onStatusChange = null;
+
+        this.NOTES = {
+          G2: 98.00,
+          C3: 130.81, D3: 146.83, E3: 164.81, F3: 174.61, Fs3: 185.00, G3: 196.00, Ab3: 207.65, A3: 220.00, Bb3: 233.08, B3: 246.94,
+          C4: 261.63, D4: 293.66, Eb4: 311.13, E4: 329.63, F4: 349.23, Fs4: 369.99, G4: 392.00, Gs4: 415.30, A4: 440.00, Bb4: 466.16, B4: 493.88,
+          C5: 523.25, D5: 587.33, Ds5: 622.25, Eb5: 622.25, E5: 659.25, F5: 698.46, Gb5: 739.99, G5: 783.99, A5: 880.00, B5: 987.77,
+          C6: 1046.50
+        };
+
+        this.melody = this.createOverworldSequence();
+        this.onFirstUserGesture = this.onFirstUserGesture.bind(this);
+      }
+
+      createOverworldSequence() {
+        const N = this.NOTES;
+        // Duraciones en tiempos de negra (1.0 = 0.30s a 200 BPM)
+        const intro = [
+          { m: N.E5, b: N.D3, d: 0.5 },
+          { m: N.E5, b: N.D3, d: 0.5 },
+          { m: null, b: null, d: 0.5 },
+          { m: N.E5, b: N.D3, d: 0.5 },
+          { m: null, b: null, d: 0.5 },
+          { m: N.C5, b: N.C3, d: 0.5 },
+          { m: N.E5, b: N.D3, d: 1.0 },
+          { m: N.G5, b: N.G3, d: 1.0 },
+          { m: null, b: null, d: 1.0 },
+          { m: N.G4, b: N.G2, d: 1.0 },
+          { m: null, b: null, d: 1.0 },
+        ];
+
+        const partA = [
+          { m: N.C5, b: N.G3, d: 1.5 },
+          { m: N.G4, b: N.E3, d: 0.5 },
+          { m: null, b: null, d: 1.0 },
+          { m: N.E4, b: N.C3, d: 1.0 },
+          { m: null, b: null, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 1.0 },
+          { m: N.B4, b: N.G3, d: 1.0 },
+          { m: N.Bb4, b: N.Fs3, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 1.0 },
+          { m: N.G4, b: N.E3, d: 2 / 3 },
+          { m: N.E5, b: N.C4, d: 2 / 3 },
+          { m: N.G5, b: N.E4, d: 2 / 3 },
+          { m: N.A5, b: N.F4, d: 1.0 },
+          { m: N.F5, b: N.D4, d: 0.5 },
+          { m: N.G5, b: N.E4, d: 0.5 },
+          { m: null, b: null, d: 0.5 },
+          { m: N.E5, b: N.C4, d: 0.5 },
+          { m: N.C5, b: N.A3, d: 0.5 },
+          { m: N.D5, b: N.B3, d: 0.5 },
+          { m: N.B4, b: N.G3, d: 1.5 },
+          { m: null, b: null, d: 0.5 },
+        ];
+
+        const partB = [
+          { m: null, b: N.C3, d: 1.0 },
+          { m: N.G5, b: N.G3, d: 0.5 },
+          { m: N.Gb5, b: N.G3, d: 0.5 },
+          { m: N.F5, b: N.G3, d: 0.5 },
+          { m: N.Ds5, b: N.C4, d: 1.0 },
+          { m: N.E5, b: N.C4, d: 0.5 },
+          { m: null, b: N.F3, d: 0.5 },
+          { m: N.Gs4, b: N.F3, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 0.5 },
+          { m: N.C5, b: N.C4, d: 0.5 },
+          { m: null, b: N.C4, d: 0.5 },
+          { m: N.A4, b: N.C4, d: 0.5 },
+          { m: N.C5, b: N.F3, d: 0.5 },
+          { m: N.D5, b: N.F3, d: 0.5 },
+          { m: null, b: N.C3, d: 1.0 },
+          { m: N.G5, b: N.E3, d: 0.5 },
+          { m: N.Gb5, b: N.E3, d: 0.5 },
+          { m: N.F5, b: N.E3, d: 0.5 },
+          { m: N.Ds5, b: N.G3, d: 1.0 },
+          { m: N.E5, b: N.C4, d: 0.5 },
+          { m: null, b: null, d: 0.5 },
+          { m: N.C6, b: N.G4, d: 1.0 },
+          { m: N.C6, b: N.G4, d: 0.5 },
+          { m: N.C6, b: N.G4, d: 1.5 },
+          { m: null, b: N.C3, d: 1.0 },
+          { m: N.G5, b: N.G3, d: 0.5 },
+          { m: N.Gb5, b: N.G3, d: 0.5 },
+          { m: N.F5, b: N.G3, d: 0.5 },
+          { m: N.Ds5, b: N.C4, d: 1.0 },
+          { m: N.E5, b: N.C4, d: 0.5 },
+          { m: null, b: N.F3, d: 0.5 },
+          { m: N.Gs4, b: N.F3, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 0.5 },
+          { m: N.C5, b: N.C4, d: 0.5 },
+          { m: null, b: N.C4, d: 0.5 },
+          { m: N.A4, b: N.C4, d: 0.5 },
+          { m: N.C5, b: N.F3, d: 0.5 },
+          { m: N.D5, b: N.F3, d: 0.5 },
+          { m: null, b: N.C3, d: 1.0 },
+          { m: N.Eb5, b: N.Ab3, d: 1.5 },
+          { m: N.D5, b: N.Bb3, d: 1.5 },
+          { m: N.C5, b: N.C4, d: 1.5 },
+          { m: null, b: N.G3, d: 1.0 },
+          { m: null, b: N.G3, d: 0.5 },
+          { m: null, b: N.C3, d: 1.0 },
+        ];
+
+        const partC = [
+          { m: N.E5, b: N.C3, d: 0.5 },
+          { m: N.C5, b: N.C3, d: 1.0 },
+          { m: N.G4, b: N.Fs3, d: 0.5 },
+          { m: null, b: N.G3, d: 1.0 },
+          { m: N.Gs4, b: N.C4, d: 1.0 },
+          { m: N.A4, b: N.F3, d: 0.5 },
+          { m: N.F5, b: N.F3, d: 1.0 },
+          { m: N.F5, b: N.C4, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 1.5 },
+          { m: N.B4, b: N.D3, d: 2 / 3 },
+          { m: N.A5, b: N.D3, d: 2 / 3 },
+          { m: N.A5, b: N.F3, d: 2 / 3 },
+          { m: N.A5, b: N.G3, d: 2 / 3 },
+          { m: N.G5, b: N.B3, d: 2 / 3 },
+          { m: N.F5, b: N.B3, d: 2 / 3 },
+          { m: N.E5, b: N.G3, d: 0.5 },
+          { m: N.C5, b: N.G3, d: 1.0 },
+          { m: N.A4, b: N.C4, d: 0.5 },
+          { m: N.G4, b: N.G3, d: 1.5 },
+          { m: N.E5, b: N.C3, d: 0.5 },
+          { m: N.C5, b: N.C3, d: 1.0 },
+          { m: N.G4, b: N.Fs3, d: 0.5 },
+          { m: null, b: N.G3, d: 1.0 },
+          { m: N.Gs4, b: N.C4, d: 1.0 },
+          { m: N.A4, b: N.F3, d: 0.5 },
+          { m: N.F5, b: N.F3, d: 1.0 },
+          { m: N.F5, b: N.C4, d: 0.5 },
+          { m: N.A4, b: N.F3, d: 1.5 },
+          { m: N.B4, b: N.G3, d: 0.5 },
+          { m: N.F5, b: N.G3, d: 1.0 },
+          { m: N.F5, b: N.G3, d: 0.5 },
+          { m: N.F5, b: N.G3, d: 2 / 3 },
+          { m: N.E5, b: N.A3, d: 2 / 3 },
+          { m: N.D5, b: N.B3, d: 2 / 3 },
+          { m: N.C5, b: N.C4, d: 0.5 },
+          { m: N.E4, b: N.G3, d: 1.0 },
+          { m: N.E4, b: N.G3, d: 0.5 },
+          { m: N.C4, b: N.C3, d: 1.5 },
+        ];
+
+        return [...intro, ...partA, ...partA, ...partB, ...partB, ...partC, ...partC];
+      }
+
+      emitStatus() {
+        if (typeof this.onStatusChange === 'function') {
+          this.onStatusChange({
+            isPlaying: this.isPlaying,
+            userPaused: this.userPaused,
+            waitingGesture: this.gestureAttached
+          });
+        }
+      }
+
+      attachGestureOnce() {
+        if (this.gestureAttached || this.userPaused || this.isPlaying) return;
+        this.gestureAttached = true;
+        window.addEventListener('pointerdown', this.onFirstUserGesture, { once: true, passive: true });
+        window.addEventListener('keydown', this.onFirstUserGesture, { once: true, passive: true });
+        this.emitStatus();
+      }
+
+      detachGestureListeners() {
+        if (!this.gestureAttached) return;
+        this.gestureAttached = false;
+        window.removeEventListener('pointerdown', this.onFirstUserGesture);
+        window.removeEventListener('keydown', this.onFirstUserGesture);
+      }
+
+      onFirstUserGesture(event) {
+        this.detachGestureListeners();
+        // Si el primer toque fue precisamente en el botón de Pausar, no reanudar
+        if (event && event.target && event.target.closest && event.target.closest('#btn-toggle-mario-music')) {
+          return;
+        }
+        if (this.userPaused || this.isPlaying) return;
+        this.start(false);
+      }
+
+      stopAllOscillators() {
+        for (const item of this.activeOscillators) {
+          try {
+            item.osc.onended = null;
+            item.osc.stop(0);
+            item.osc.disconnect();
+            item.gain.disconnect();
+          } catch (_) {}
+        }
+        this.activeOscillators.clear();
+      }
+
+      playSingleNote(freq, waveType, peakGain, durationSec) {
+        if (!this.audioCtx || !this.masterGain || this.audioCtx.state !== 'running') return;
+        const now = this.audioCtx.currentTime;
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+
+        osc.type = waveType;
+        osc.frequency.setValueAtTime(freq, now);
+
+        const soundDuration = Math.max(0.04, durationSec * 0.85);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(peakGain, now + 0.008);
+        gain.gain.setValueAtTime(peakGain * 0.85, now + soundDuration * 0.72);
+        gain.gain.exponentialRampToValueAtTime(0.0008, now + soundDuration);
+
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+
+        const record = { osc, gain };
+        this.activeOscillators.add(record);
+        osc.onended = () => {
+          try {
+            osc.disconnect();
+            gain.disconnect();
+          } catch (_) {}
+          this.activeOscillators.delete(record);
+        };
+
+        osc.start(now);
+        osc.stop(now + soundDuration + 0.01);
+      }
+
+      runStep(token) {
+        if (!this.isPlaying || this.userPaused || token !== this.sessionToken) return;
+        if (!this.audioCtx || this.audioCtx.state !== 'running') return;
+
+        const step = this.melody[this.stepIndex];
+        const beatSec = 60.0 / this.bpm; // 0.30s por negra (velocidad normal 1.0x)
+        const durationSec = step.d * beatSec;
+
+        if (step.m) {
+          this.playSingleNote(step.m, 'square', 0.18, durationSec);
+        }
+        if (step.b) {
+          this.playSingleNote(step.b, 'triangle', 0.26, durationSec);
+        }
+
+        this.stepIndex = (this.stepIndex + 1) % this.melody.length;
+
+        // Un único setTimeout por paso para evitar cualquier acumulación o eco
+        this.stepTimeoutId = window.setTimeout(() => {
+          this.runStep(token);
+        }, Math.round(durationSec * 1000));
+      }
+
+      async start(isAutoAttempt = false) {
+        if (this.isPlaying) return;
+        if (!isAutoAttempt) {
+          this.userPaused = false;
+        }
+        if (this.userPaused) return;
+
+        const token = ++this.sessionToken;
+
+        if (this.stepTimeoutId) {
+          clearTimeout(this.stepTimeoutId);
+          this.stepTimeoutId = null;
+        }
+        this.stopAllOscillators();
+
+        if (!this.audioCtx || this.audioCtx.state === 'closed') {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          this.audioCtx = new AudioCtx();
+          this.masterGain = this.audioCtx.createGain();
+          this.masterGain.gain.setValueAtTime(this.volume, this.audioCtx.currentTime);
+          this.masterGain.connect(this.audioCtx.destination);
+        }
+
+        if (this.audioCtx.state === 'suspended') {
+          try {
+            await this.audioCtx.resume();
+          } catch (_) {}
+        }
+
+        if (token !== this.sessionToken || this.userPaused) {
+          return;
+        }
+
+        // Si el navegador bloquea el autoplay sin interacción previa, esperar un único toque
+        if (this.audioCtx.state !== 'running') {
+          this.isPlaying = false;
+          if (isAutoAttempt) {
+            this.attachGestureOnce();
+          }
+          this.emitStatus();
+          return;
+        }
+
+        this.detachGestureListeners();
+        this.isPlaying = true;
+        this.masterGain.gain.setValueAtTime(this.volume, this.audioCtx.currentTime);
+        this.emitStatus();
+        this.runStep(token);
+      }
+
+      pauseCompletely() {
+        ++this.sessionToken;
+        this.isPlaying = false;
+        this.userPaused = true;
+        this.detachGestureListeners();
+
+        if (this.stepTimeoutId) {
+          clearTimeout(this.stepTimeoutId);
+          this.stepTimeoutId = null;
+        }
+
+        this.stopAllOscillators();
+
+        if (this.audioCtx && this.audioCtx.state !== 'closed') {
+          try {
+            if (this.masterGain) {
+              this.masterGain.gain.setValueAtTime(0, this.audioCtx.currentTime);
+              this.masterGain.disconnect();
+            }
+            this.audioCtx.close().catch(() => {});
+          } catch (_) {}
+        }
+
+        this.audioCtx = null;
+        this.masterGain = null;
+        this.emitStatus();
+      }
+
+      toggle() {
+        if (this.isPlaying) {
+          this.pauseCompletely();
+        } else {
+          this.userPaused = false;
+          this.start(false);
+        }
+      }
+
+      setVolume(percent) {
+        const clamped = Math.max(0, Math.min(100, Number(percent) || 0));
+        this.volume = clamped / 100;
+        if (this.masterGain && this.audioCtx && this.audioCtx.state === 'running') {
+          this.masterGain.gain.setTargetAtTime(this.volume, this.audioCtx.currentTime, 0.015);
+        }
+      }
+
+      destroy() {
+        this.pauseCompletely();
+      }
+    }
+
+    const marioPlayer = new MarioOnePlayerSingleton();
+    window.__MARIO_ONE_PLAYER__ = marioPlayer;
+
+    /* =========================================================================
+       2. ESTADO DE LA APLICACIÓN Y COLORES DE LAS 5 BARRAS
+       ========================================================================= */
+    const BAR_PALETTES = [
+      { gradient: 'linear-gradient(180deg, #4ade80 0%, #16a34a 100%)', dot: '#22c55e' },
+      { gradient: 'linear-gradient(180deg, #38bdf8 0%, #0284c7 100%)', dot: '#0ea5e9' },
+      { gradient: 'linear-gradient(180deg, #fbbf24 0%, #d97706 100%)', dot: '#f59e0b' },
+      { gradient: 'linear-gradient(180deg, #c084fc 0%, #7e22ce 100%)', dot: '#a855f7' },
+      { gradient: 'linear-gradient(180deg, #fb7185 0%, #e11d48 100%)', dot: '#f43f5e' }
+    ];
+
+    const DEFAULT_PEOPLE = [
+      { id: 0, name: 'Integrante 1', percentage: 20 },
+      { id: 1, name: 'Integrante 2', percentage: 20 },
+      { id: 2, name: 'Integrante 3', percentage: 20 },
+      { id: 3, name: 'Integrante 4', percentage: 20 },
+      { id: 4, name: 'Integrante 5', percentage: 20 }
+    ];
+
+    const state = {
+      people: DEFAULT_PEOPLE.map((p) => ({ ...p })),
+      isCreatorMode: false,
+      isAdmin: false,
+      currentUser: null,
+      auth: null,
+      db: null,
+      teamDocRef: null,
+      unsubscribeTeam: null,
+      initializingDoc: false,
+      saveTimer: null
+    };
+
+    const LOCAL_STORAGE_KEY = 'equipo-trabajo-5-state-v1';
+
+    const dom = {
+      syncStatusBadge: document.getElementById('sync-status-badge'),
+      syncStatusDot: document.getElementById('sync-status-dot'),
+      syncStatusText: document.getElementById('sync-status-text'),
+      roleStatusBadge: document.getElementById('role-status-badge'),
+      btnOpenCreatorModal: document.getElementById('btn-open-creator-modal'),
+      btnExitCreatorMode: document.getElementById('btn-exit-creator-mode'),
+      teamAverageDisplay: document.getElementById('team-average-display'),
+      teamSumDisplay: document.getElementById('team-sum-display'),
+      marioStatusBadge: document.getElementById('mario-status-badge'),
+      btnToggleMarioMusic: document.getElementById('btn-toggle-mario-music'),
+      marioVolumeSlider: document.getElementById('mario-volume-slider'),
+      marioVolumeLabel: document.getElementById('mario-volume-label'),
+      mainGrid: document.getElementById('main-grid'),
+      barsColumnsGrid: document.getElementById('bars-columns-grid'),
+      barsNamesRow: document.getElementById('bars-names-row'),
+      creatorEditorPanel: document.getElementById('creator-editor-panel'),
+      saveStatusPill: document.getElementById('save-status-pill'),
+      btnAll100: document.getElementById('btn-all-100'),
+      btnEqual20: document.getElementById('btn-equal-20'),
+      btnReset0: document.getElementById('btn-reset-0'),
+      personEditorList: document.getElementById('person-editor-list'),
+      creatorLoginModal: document.getElementById('creator-login-modal'),
+      creatorLoginForm: document.getElementById('creator-login-form'),
+      creatorEmailInput: document.getElementById('creator-email-input'),
+      creatorPasswordInput: document.getElementById('creator-password-input'),
+      creatorLoginError: document.getElementById('creator-login-error'),
+      btnCancelLoginModal: document.getElementById('btn-cancel-login-modal'),
+      toastNotification: document.getElementById('toast-notification')
+    };
+
+    function round1(value) {
+      return Math.round(value * 10) / 10;
+    }
+
+    function formatPct(value) {
+      const clean = round1(Math.max(0, Math.min(100, Number(value) || 0)));
+      return Number.isInteger(clean) ? `${clean}%` : `${clean.toFixed(1)}%`;
+    }
+
+    let toastTimer = null;
+    function showToast(message) {
+      if (!dom.toastNotification) return;
+      dom.toastNotification.textContent = message;
+      dom.toastNotification.classList.remove('hidden');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        dom.toastNotification.classList.add('hidden');
+      }, 2400);
+    }
+
+    /* =========================================================================
+       3. SINCRONIZACIÓN Y PERMISOS DE FIREBASE
+       El administrador se valida con Firebase Authentication.
+       Firestore Rules bloquea las escrituras de cualquier UID distinto.
+       ========================================================================= */
+    function setSyncBadge(isLive, label) {
+      dom.syncStatusText.textContent = label;
+      if (isLive) {
+        dom.syncStatusBadge.className = 'pill-badge pill-sync-live';
+        dom.syncStatusDot.className = 'sync-dot';
+      } else {
+        dom.syncStatusBadge.className = 'pill-badge pill-sync-local';
+        dom.syncStatusDot.className = 'sync-dot local';
+      }
+    }
+
+    function cleanPeople(people) {
+      if (!Array.isArray(people) || people.length !== 5) return null;
+      return people.map((item, idx) => ({
+        id: idx,
+        name: typeof item.name === 'string' && item.name.trim()
+          ? item.name.trim().slice(0, 26)
+          : `Integrante ${idx + 1}`,
+        percentage: Math.max(0, Math.min(100, round1(Number(item.percentage) || 0)))
+      }));
+    }
+
+    function saveLocalTeamData() {
+      try {
+        const payload = {
+          people: state.people.map((p) => ({
+            id: p.id,
+            name: String(p.name || '').trim() || `Integrante ${p.id + 1}`,
+            percentage: Math.max(0, Math.min(100, round1(Number(p.percentage) || 0)))
+          })),
+          updatedAt: Date.now()
+        };
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(payload));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function loadLocalTeamData() {
+      try {
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (!saved) return false;
+        const data = JSON.parse(saved);
+        const people = cleanPeople(data.people);
+        if (people) state.people = people;
+        return Boolean(people);
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function resolveFirebaseConfig() {
+      const cfg = FIREBASE_PUBLIC_CONFIG;
+      const required = ['apiKey', 'authDomain', 'projectId', 'appId'];
+      if (!cfg || required.some((key) => !cfg[key] || String(cfg[key]).startsWith('PEGA_AQUI'))) {
+        return null;
+      }
+      return cfg;
+    }
+
+    function currentUserIsAdmin() {
+      return Boolean(
+        state.currentUser &&
+        ADMIN_UID &&
+        !ADMIN_UID.startsWith('PEGA_AQUI') &&
+        state.currentUser.uid === ADMIN_UID
+      );
+    }
+
+    function teamPayload() {
+      return {
+        people: state.people.map((p) => ({
+          id: p.id,
+          name: String(p.name || '').trim() || `Integrante ${p.id + 1}`,
+          percentage: round1(p.percentage)
+        })),
+        updatedAt: Date.now()
+      };
+    }
+
+    function subscribeTeamDocument() {
+      if (!state.teamDocRef) return;
+      if (state.unsubscribeTeam) state.unsubscribeTeam();
+
+      state.unsubscribeTeam = onSnapshot(
+        state.teamDocRef,
+        async (snapshot) => {
+          if (!snapshot.exists()) {
+            if (currentUserIsAdmin() && !state.initializingDoc) {
+              state.initializingDoc = true;
+              try {
+                await setDoc(state.teamDocRef, teamPayload());
+              } catch (_) {
+                setSyncBadge(false, 'No se pudo crear el documento');
+                showToast('Revisa las reglas de Firestore: solo el administrador puede crear datos.');
+              } finally {
+                state.initializingDoc = false;
+              }
+            } else {
+              setSyncBadge(true, 'Conectado; esperando datos del administrador');
+            }
+            return;
+          }
+
+          const remotePeople = cleanPeople(snapshot.data().people);
+          if (remotePeople) {
+            state.people = remotePeople;
+            renderChartAndMetrics();
+            if (state.isCreatorMode) syncCreatorInputs();
+            saveLocalTeamData();
+          }
+          setSyncBadge(true, currentUserIsAdmin() ? 'Conectado como administrador' : 'Cambios sincronizados en vivo');
+        },
+        () => setSyncBadge(false, 'Error de acceso a Firebase; revisa las reglas')
+      );
+    }
+
+    async function initRealtimeDatabase() {
+      try {
+        const hasLocalData = loadLocalTeamData();
+        renderChartAndMetrics();
+
+        const firebaseConfig = resolveFirebaseConfig();
+        if (!firebaseConfig || !ADMIN_UID || ADMIN_UID.startsWith('PEGA_AQUI')) {
+          setSyncBadge(false, hasLocalData ? 'Datos locales; falta configurar Firebase' : 'Falta configurar Firebase');
+          return;
+        }
+
+        const app = initializeApp(firebaseConfig);
+        state.auth = getAuth(app);
+        state.db = getFirestore(app);
+        // La sesión queda solo en memoria: al recargar se pedirá acceso al administrador otra vez.
+        await setPersistence(state.auth, inMemoryPersistence);
+        if (!state.auth.currentUser) await signInAnonymously(state.auth);
+        state.currentUser = state.auth.currentUser;
+
+        state.teamDocRef = doc(
+          state.db,
+          'artifacts', FIRESTORE_APP_ID, 'public', 'data', 'teams', 'equipo-principal-5'
+        );
+        subscribeTeamDocument();
+      } catch (error) {
+        console.error('Firebase initialization error:', error);
+        setSyncBadge(false, 'No se pudo conectar con Firebase');
+      }
+    }
+
+    function persistTeamData(immediate = false) {
+      if (!state.isCreatorMode || !currentUserIsAdmin()) return;
+      dom.saveStatusPill.textContent = 'Guardando...';
+
+      const saveTask = async () => {
+        const localSaved = saveLocalTeamData();
+        if (!state.currentUser || !state.teamDocRef || !currentUserIsAdmin()) {
+          dom.saveStatusPill.textContent = localSaved ? 'Guardado solo en este dispositivo' : 'No se pudo guardar';
+          setSyncBadge(false, 'Sin conexión con la nube');
+          return;
+        }
+        try {
+          await setDoc(state.teamDocRef, teamPayload(), { merge: true });
+          dom.saveStatusPill.textContent = '✓ Guardado en vivo';
+          setSyncBadge(true, 'Cambios publicados para todos');
+        } catch (error) {
+          console.error('Firestore save error:', error);
+          dom.saveStatusPill.textContent = localSaved ? 'Guardado local; nube no disponible' : 'Error al guardar';
+          setSyncBadge(false, 'No se pudo publicar en la nube');
+        }
+      };
+
+      if (state.saveTimer) clearTimeout(state.saveTimer);
+      if (immediate) saveTask();
+      else state.saveTimer = setTimeout(saveTask, 180);
+    }
+
+    /* =========================================================================
+       5. RENDERIZADO DEL GRÁFICO DE BARRAS EN VIVO Y MÉTRICAS
+       ========================================================================= */
+    function renderChartAndMetrics() {
+      // Promedio del Equipo fijo SIEMPRE en 500%
+      dom.teamAverageDisplay.textContent = '500%';
+
+      // Suma Total calculada en tiempo real con los porcentajes de las 5 personas
+      const totalSum = round1(state.people.reduce((acc, p) => acc + (Number(p.percentage) || 0), 0));
+      dom.teamSumDisplay.textContent = Number.isInteger(totalSum) ? `${totalSum}%` : `${totalSum.toFixed(1)}%`;
+
+      // Renderizar las 5 barras (100% = 100% de la altura exacta del plot area)
+      dom.barsColumnsGrid.innerHTML = '';
+      dom.barsNamesRow.innerHTML = '';
+
+      state.people.forEach((person, index) => {
+        const pct = Math.max(0, Math.min(100, round1(Number(person.percentage) || 0)));
+        const palette = BAR_PALETTES[index % BAR_PALETTES.length];
+        const isFull100 = pct >= 100;
+
+        const slot = document.createElement('div');
+        slot.className = 'bar-column-slot';
+
+        const bar = document.createElement('div');
+        bar.className = `bar-fill${isFull100 ? ' is-full-100' : ''}`;
+        bar.style.height = `${pct}%`;
+        bar.style.background = palette.gradient;
+
+        const tag = document.createElement('span');
+        tag.className = `bar-percent-tag${isFull100 ? ' is-full-100' : ''}`;
+        tag.textContent = formatPct(pct);
+
+        bar.appendChild(tag);
+        slot.appendChild(bar);
+        dom.barsColumnsGrid.appendChild(slot);
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'bar-name-label';
+        nameEl.textContent = person.name;
+        dom.barsNamesRow.appendChild(nameEl);
+      });
+    }
+
+    /* =========================================================================
+       6. PANEL DE EDICIÓN EXCLUSIVO DEL CREADOR
+       ========================================================================= */
+    function buildCreatorControls() {
+      dom.personEditorList.innerHTML = '';
+
+      state.people.forEach((person, index) => {
+        const palette = BAR_PALETTES[index % BAR_PALETTES.length];
+        const card = document.createElement('div');
+        card.className = 'person-editor-item';
+
+        card.innerHTML = `
+          <div class="person-top-row">
+            <span class="person-color-dot" style="background: ${palette.dot};"></span>
+            <input
+              type="text"
+              maxlength="26"
+              value="${escapeHtmlAttr(person.name)}"
+              data-role="name-input"
+              data-index="${index}"
+              aria-label="Nombre de integrante ${index + 1}"
+              class="person-name-input"
+            />
+            <div class="person-number-wrap">
+              <input
+                type="number"
+                min="0"
+                max="100"
+                step="1"
+                value="${person.percentage}"
+                data-role="number-input"
+                data-index="${index}"
+                aria-label="Porcentaje de integrante ${index + 1}"
+                class="person-percent-input"
+              />
+              <span style="font-size: 12px; font-weight: 800; color: #94a3b8;">%</span>
+            </div>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="1"
+            value="${person.percentage}"
+            data-role="range-input"
+            data-index="${index}"
+            aria-label="Deslizador de porcentaje para integrante ${index + 1}"
+            class="person-slider"
+          />
+        `;
+
+        dom.personEditorList.appendChild(card);
+      });
+    }
+
+    function syncCreatorInputs() {
+      state.people.forEach((person, index) => {
+        const nameInput = dom.personEditorList.querySelector(`[data-role="name-input"][data-index="${index}"]`);
+        const numInput = dom.personEditorList.querySelector(`[data-role="number-input"][data-index="${index}"]`);
+        const rangeInput = dom.personEditorList.querySelector(`[data-role="range-input"][data-index="${index}"]`);
+
+        if (nameInput && document.activeElement !== nameInput) {
+          nameInput.value = person.name;
+        }
+        if (numInput && document.activeElement !== numInput) {
+          numInput.value = person.percentage;
+        }
+        if (rangeInput && document.activeElement !== rangeInput) {
+          rangeInput.value = person.percentage;
+        }
+      });
+    }
+
+    function escapeHtmlAttr(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function setCreatorMode(enabled) {
+      state.isCreatorMode = Boolean(enabled && currentUserIsAdmin());
+
+      if (state.isCreatorMode) {
+        dom.roleStatusBadge.textContent = '✏️ Modo Creador (Editando en Vivo)';
+        dom.roleStatusBadge.className = 'pill-badge pill-role-creator';
+        dom.btnOpenCreatorModal.classList.add('hidden');
+        dom.btnExitCreatorMode.classList.remove('hidden');
+        dom.mainGrid.classList.add('creator-open');
+        dom.creatorEditorPanel.classList.remove('hidden');
+        buildCreatorControls();
+      } else {
+        dom.roleStatusBadge.textContent = '👁️ Vista Compañeros (Solo Lectura)';
+        dom.roleStatusBadge.className = 'pill-badge pill-role-viewer';
+        dom.btnExitCreatorMode.classList.add('hidden');
+        dom.btnOpenCreatorModal.classList.remove('hidden');
+        dom.mainGrid.classList.remove('creator-open');
+        dom.creatorEditorPanel.classList.add('hidden');
+      }
+    }
+
+    function updatePersonPercentage(index, rawValue) {
+      if (!state.isCreatorMode || !currentUserIsAdmin()) return;
+      const clamped = Math.max(0, Math.min(100, round1(Number(rawValue) || 0)));
+      state.people[index].percentage = clamped;
+
+      const numInput = dom.personEditorList.querySelector(`[data-role="number-input"][data-index="${index}"]`);
+      const rangeInput = dom.personEditorList.querySelector(`[data-role="range-input"][data-index="${index}"]`);
+      if (numInput && document.activeElement !== numInput) numInput.value = clamped;
+      if (rangeInput && document.activeElement !== rangeInput) rangeInput.value = clamped;
+
+      renderChartAndMetrics();
+      persistTeamData(false);
+    }
+
+    function applyAllPercentage(targetPct, toastMsg) {
+      if (!state.isCreatorMode || !currentUserIsAdmin()) return;
+      state.people = state.people.map((p) => ({ ...p, percentage: targetPct }));
+      syncCreatorInputs();
+      renderChartAndMetrics();
+      persistTeamData(true);
+      showToast(toastMsg);
+    }
+
+    /* =========================================================================
+       7. ACTUALIZACIÓN DE INTERFAZ DE MÚSICA Y EVENTOS
+       ========================================================================= */
+    function updateMusicUi({ isPlaying, userPaused, waitingGesture }) {
+      if (isPlaying) {
+        dom.btnToggleMarioMusic.textContent = '⏸ Pausar Música';
+        dom.btnToggleMarioMusic.className = 'btn btn-music-playing';
+        dom.marioStatusBadge.textContent = 'Sonando en vivo';
+        dom.marioStatusBadge.className = 'pill-badge pill-sync-live';
+      } else if (userPaused) {
+        dom.btnToggleMarioMusic.textContent = '▶ Reanudar Música';
+        dom.btnToggleMarioMusic.className = 'btn btn-music-paused';
+        dom.marioStatusBadge.textContent = 'Pausada';
+        dom.marioStatusBadge.className = 'pill-badge';
+      } else if (waitingGesture) {
+        dom.btnToggleMarioMusic.textContent = '▶ Activar Música';
+        dom.btnToggleMarioMusic.className = 'btn btn-music-paused';
+        dom.marioStatusBadge.textContent = 'Toca para iniciar';
+        dom.marioStatusBadge.className = 'pill-badge pill-sync-local';
+      } else {
+        dom.btnToggleMarioMusic.textContent = '▶ Reanudar Música';
+        dom.btnToggleMarioMusic.className = 'btn btn-music-paused';
+        dom.marioStatusBadge.textContent = 'Lista';
+        dom.marioStatusBadge.className = 'pill-badge';
+      }
+    }
+
+    function openLoginModal() {
+      if (currentUserIsAdmin()) {
+        setCreatorMode(true);
+        showToast('Sesión administradora verificada');
+        return;
+      }
+      dom.creatorLoginError.classList.add('hidden');
+      dom.creatorPasswordInput.value = '';
+      dom.creatorLoginModal.classList.remove('hidden');
+      setTimeout(() => dom.creatorEmailInput.focus(), 40);
+    }
+
+    function closeLoginModal() {
+      dom.creatorLoginModal.classList.add('hidden');
+      dom.creatorPasswordInput.value = '';
+    }
+
+    async function returnToViewerMode() {
+      setCreatorMode(false);
+      state.isAdmin = false;
+      if (state.unsubscribeTeam) {
+        state.unsubscribeTeam();
+        state.unsubscribeTeam = null;
+      }
+      try {
+        if (state.auth) {
+          await signOut(state.auth);
+          await signInAnonymously(state.auth);
+          state.currentUser = state.auth.currentUser;
+          subscribeTeamDocument();
+        }
+      } catch (error) {
+        console.error('Sign out error:', error);
+        setSyncBadge(false, 'Sesión cerrada; recarga para reconectar');
+      }
+      showToast('Sesión administradora cerrada');
+    }
+
+    function bindEvents() {
+      marioPlayer.onStatusChange = updateMusicUi;
+
+      // Música: todos pueden pausar, reanudar y cambiar el volumen.
+      dom.btnToggleMarioMusic.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const wasPlaying = marioPlayer.isPlaying;
+        marioPlayer.toggle();
+        showToast(wasPlaying ? 'Música pausada' : 'Intentando reproducir la música');
+      });
+
+      dom.marioVolumeSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const val = Number(e.target.value);
+        marioPlayer.setVolume(val);
+        dom.marioVolumeLabel.textContent = `${val}%`;
+      });
+
+      // Inicio de sesión de la única cuenta administradora.
+      dom.btnOpenCreatorModal.addEventListener('click', openLoginModal);
+      dom.btnCancelLoginModal.addEventListener('click', closeLoginModal);
+      dom.creatorLoginModal.addEventListener('click', (e) => {
+        if (e.target === dom.creatorLoginModal) closeLoginModal();
+      });
+
+      dom.creatorLoginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        dom.creatorLoginError.classList.add('hidden');
+
+        if (!state.auth || !state.teamDocRef || !ADMIN_UID || ADMIN_UID.startsWith('PEGA_AQUI')) {
+          dom.creatorLoginError.textContent = 'Primero debes completar la configuración de Firebase y el UID del administrador en el HTML.';
+          dom.creatorLoginError.classList.remove('hidden');
+          return;
+        }
+
+        const email = dom.creatorEmailInput.value.trim();
+        const password = dom.creatorPasswordInput.value;
+        try {
+          const credential = await signInWithEmailAndPassword(state.auth, email, password);
+          state.currentUser = credential.user;
+          state.isAdmin = currentUserIsAdmin();
+
+          if (!state.isAdmin) {
+            await signOut(state.auth);
+            await signInAnonymously(state.auth);
+            state.currentUser = state.auth.currentUser;
+            state.isAdmin = false;
+            subscribeTeamDocument();
+            throw new Error('Esta cuenta no es la administradora autorizada.');
+          }
+
+          subscribeTeamDocument();
+          closeLoginModal();
+          setCreatorMode(true);
+          showToast('Acceso de administrador concedido');
+        } catch (error) {
+          console.error('Admin sign-in error:', error);
+          dom.creatorLoginError.textContent = error.message === 'Esta cuenta no es la administradora autorizada.'
+            ? error.message
+            : 'No se pudo iniciar sesión. Verifica el correo, la contraseña y que Email/Password esté habilitado en Firebase.';
+          dom.creatorLoginError.classList.remove('hidden');
+        }
+      });
+
+      // Cerrar el modo de edición también cierra la sesión administradora.
+      dom.btnExitCreatorMode.addEventListener('click', returnToViewerMode);
+
+      dom.btnAll100.addEventListener('click', () => applyAllPercentage(100, 'Todos los integrantes al 100%'));
+      dom.btnEqual20.addEventListener('click', () => applyAllPercentage(20, 'Todos ajustados al 20%'));
+      dom.btnReset0.addEventListener('click', () => applyAllPercentage(0, 'Todos reiniciados a 0%'));
+
+      dom.personEditorList.addEventListener('input', (e) => {
+        if (!state.isCreatorMode || !currentUserIsAdmin()) return;
+        const target = e.target;
+        const role = target.getAttribute('data-role');
+        const index = Number(target.getAttribute('data-index'));
+        if (Number.isNaN(index) || !state.people[index]) return;
+
+        if (role === 'name-input') {
+          state.people[index].name = target.value.slice(0, 26) || `Integrante ${index + 1}`;
+          renderChartAndMetrics();
+          persistTeamData(false);
+        } else if (role === 'range-input' || role === 'number-input') {
+          updatePersonPercentage(index, target.value);
+        }
+      });
+    }
+
+    // Sincroniza otras pestañas del mismo navegador cuando no se usa Firebase.
+    window.addEventListener('storage', (event) => {
+      if (event.key !== LOCAL_STORAGE_KEY || !event.newValue || state.isCreatorMode) return;
+      try {
+        const data = JSON.parse(event.newValue);
+        const people = cleanPeople(data.people);
+        if (!people) return;
+        state.people = people;
+        renderChartAndMetrics();
+        setSyncBadge(false, 'Actualizado en este navegador');
+      } catch (_) {}
+    });
+
+    // Arranque de la aplicación
+    window.addEventListener('DOMContentLoaded', () => {
+      bindEvents();
+      setCreatorMode(false);
+      renderChartAndMetrics();
+      initRealtimeDatabase();
+      // Intento automático de reproducción al entrar a la página
+      marioPlayer.start(true);
+    });
+  </script>
+</body>
+</html>
