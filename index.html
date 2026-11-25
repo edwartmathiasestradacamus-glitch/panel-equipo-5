@@ -1797,9 +1797,10 @@
               state.initializingDoc = true;
               try {
                 await setDoc(state.teamDocRef, teamPayload());
-              } catch (_) {
-                setSyncBadge(false, 'No se pudo crear el documento');
-                showToast('Revisa las reglas de Firestore: solo el administrador puede crear datos.');
+              } catch (error) {
+                console.error('Firestore initial document creation error:', error);
+                setSyncBadge(false, `No se pudo crear el documento (${error.code || 'error'}).`);
+                showToast(`Error al crear datos: ${error.code || error.message || 'revisa Firestore'}`);
               } finally {
                 state.initializingDoc = false;
               }
@@ -1818,7 +1819,10 @@
           }
           setSyncBadge(true, currentUserIsAdmin() ? 'Conectado como administrador' : 'Cambios sincronizados en vivo');
         },
-        () => setSyncBadge(false, 'Error de acceso a Firebase; revisa las reglas')
+        (error) => {
+          console.error('Firestore listener error:', error);
+          setSyncBadge(false, `Error de lectura (${error.code || 'Firestore'}). Revisa reglas y autenticación.`);
+        }
       );
     }
 
@@ -1838,17 +1842,31 @@
         state.db = getFirestore(app);
         // La sesión queda solo en memoria: al recargar se pedirá acceso al administrador otra vez.
         await setPersistence(state.auth, inMemoryPersistence);
-        if (!state.auth.currentUser) await signInAnonymously(state.auth);
-        state.currentUser = state.auth.currentUser;
 
+        // Crear la referencia ANTES del acceso anónimo. Así, si Anonymous o el
+        // dominio no están autorizados, el administrador todavía puede intentar
+        // iniciar sesión con Email/Password desde el mismo HTML.
         state.teamDocRef = doc(
           state.db,
           'artifacts', FIRESTORE_APP_ID, 'public', 'data', 'teams', 'equipo-principal-5'
         );
+
+        if (!state.auth.currentUser) {
+          try {
+            await signInAnonymously(state.auth);
+          } catch (authError) {
+            state.currentUser = null;
+            console.error('Anonymous sign-in failed:', authError);
+            setSyncBadge(false, `Acceso de visitante pendiente (${authError.code || 'Authentication'}).`);
+            return;
+          }
+        }
+
+        state.currentUser = state.auth.currentUser;
         subscribeTeamDocument();
       } catch (error) {
         console.error('Firebase initialization error:', error);
-        setSyncBadge(false, 'No se pudo conectar con Firebase');
+        setSyncBadge(false, `No se pudo inicializar Firebase (${error.code || 'error'}).`);
       }
     }
 
@@ -1869,8 +1887,8 @@
           setSyncBadge(true, 'Cambios publicados para todos');
         } catch (error) {
           console.error('Firestore save error:', error);
-          dom.saveStatusPill.textContent = localSaved ? 'Guardado local; nube no disponible' : 'Error al guardar';
-          setSyncBadge(false, 'No se pudo publicar en la nube');
+          dom.saveStatusPill.textContent = localSaved ? `Guardado local; nube: ${error.code || 'error'}` : 'Error al guardar';
+          setSyncBadge(false, `No se pudo publicar (${error.code || 'Firestore'}).`);
         }
       };
 
@@ -2171,7 +2189,7 @@
           console.error('Admin sign-in error:', error);
           dom.creatorLoginError.textContent = error.message === 'Esta cuenta no es la administradora autorizada.'
             ? error.message
-            : 'No se pudo iniciar sesión. Verifica el correo, la contraseña y que Email/Password esté habilitado en Firebase.';
+            : `No se pudo iniciar sesión (${error.code || 'Authentication'}). Verifica Email/Password y que el dominio de GitHub Pages esté autorizado en Firebase.`;
           dom.creatorLoginError.classList.remove('hidden');
         }
       });
